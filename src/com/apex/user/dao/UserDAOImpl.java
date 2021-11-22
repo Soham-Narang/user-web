@@ -1,7 +1,10 @@
 package com.apex.user.dao;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import com.apex.user.util.HibernateUtil;
 import com.apex.user.vo.User;
 
 @Repository
@@ -19,7 +22,11 @@ public class UserDAOImpl implements UserDAO {
 	public void addUser(User user) {
 		System.out.println("UserDAOImpl :addUser: Start ");
 		
-		
+		Session session =  HibernateUtil.getSessionFactory().openSession();
+		Transaction tx =  session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
 		
 		System.out.println("UserDAOImpl :addUser: end");	
 	}

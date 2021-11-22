@@ -21,7 +21,7 @@ public class UserBOImpl implements UserBO {
 	}
 
 	@Override
-	@Transactional
+//	@Transactional
 	public void addUser(User user) {
 		
 		System.out.println("UserBOImpl :addUser: Start ");
